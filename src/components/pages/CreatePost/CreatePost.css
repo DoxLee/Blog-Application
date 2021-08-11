@@ -1,0 +1,13 @@
+.date-css {
+  @apply tracking-wide text-sm no-underline lg:px-3 lg:py-2 hover:bg-gray-200 hover:text-gray-700 transition rounded-md border-solid border-2 border-gray-200 py-2 px-4
+}
+
+.toggle-checkbox:checked {
+  @apply: right-0 border-green-400;
+  right: 0;
+  border-color: #68D391;
+}
+.toggle-checkbox:checked + .toggle-label {
+  @apply: bg-green-400;
+  background-color: #68D391;
+}
