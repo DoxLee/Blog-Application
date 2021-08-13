@@ -91,8 +91,9 @@ function App() {
               <Route path="/register" component={Register} />
               <Route path="/createBlog" component={CreatePost} />
               <Route path="/posts/:id" component={Post} />
-              <Route path="/edit/:id" component={EditPost} />
-              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/dashboard">
+                <Dashboard />
+              </Route>
             </Switch>
           </>
         )}

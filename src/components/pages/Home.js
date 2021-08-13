@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
-  const [limit, setLimit] = useState(3);
+  const [limit, setLimit] = useState(6);
 
   console.log(posts);
 
@@ -19,7 +19,7 @@ const Home = () => {
   // Get posts at the beginging
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [limit]);
 
   const raiseLimit = async () => {
     setLimit((pre) => pre + 3);

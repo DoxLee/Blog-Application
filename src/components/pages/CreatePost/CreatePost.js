@@ -104,7 +104,7 @@ const CreatePost = () => {
           <div className="inline-block w-2/5 lg:w-3/4 align-top">
             <div>
               <div name="title-input">
-                <label for="title" className="label-css text-gray-600 ">
+                <label htmlFor="title" className="label-css text-gray-600 ">
                   Title
                 </label>
                 <input
@@ -118,7 +118,7 @@ const CreatePost = () => {
                 />
               </div>
               <div name="description-input">
-                <label for="description" className="label-css ">
+                <label htmlFor="description" className="label-css ">
                   Description
                 </label>
                 <textarea
