@@ -21,5 +21,4 @@ const useLocalStorage = (key, initalValue) => {
   }, [prefixedKey, value]);
   return [value, setValue];
 };
-
 export default useLocalStorage;

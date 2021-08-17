@@ -2,7 +2,7 @@ export const svg = {
   clock: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="-6 w-6 text-blue-600"
+      className="w-6 text-blue-600 -6"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -18,7 +18,7 @@ export const svg = {
   document: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6 text-blue-600"
+      className="w-6 h-6 text-blue-600"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -34,7 +34,7 @@ export const svg = {
   users: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6 text-indigo-400-600"
+      className="w-6 h-6 text-indigo-400-600"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -50,7 +50,7 @@ export const svg = {
   comments: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6 text-green-600"
+      className="w-6 h-6 text-green-600"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -66,7 +66,7 @@ export const svg = {
   eye: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6 text-yellow-600"
+      className="w-6 h-6 text-yellow-600"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -88,7 +88,7 @@ export const svg = {
   likes: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5 text-pink-600"
+      className="w-5 h-5 text-pink-600"
       viewBox="0 0 20 20"
       fill="currentColor"
     >
@@ -102,7 +102,7 @@ export const svg = {
   share: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6 text-blue-600"
+      className="w-6 h-6 text-blue-600"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -118,7 +118,7 @@ export const svg = {
   edit: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-8 w-8 text-gray-500 hover:text-blue-600 transition"
+      className="w-8 h-8 text-gray-500 transition hover:text-blue-600"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -134,7 +134,7 @@ export const svg = {
   plus: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6"
+      className="w-6 h-6"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -150,7 +150,7 @@ export const svg = {
   trash: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-8 w-8 "
+      className="w-8 h-8 "
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"

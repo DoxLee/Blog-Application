@@ -25,7 +25,7 @@ const Users = () => {
 
   return (
     <div>
-      <table className="table-auto text-gray-700 w-full">
+      <table className="w-full text-gray-700 table-auto">
         <thead>
           <tr>
             <th>id</th>
@@ -44,7 +44,7 @@ const Users = () => {
               <td>{item.userName}</td>
               <td>{item.role}</td>
               <td>{moment(item.createdAt).fromNow()}</td>
-              <td className="flex justify-center items-center cursor-pointer hover:text-blue-600 transition">
+              <td className="flex items-center justify-center transition cursor-pointer hover:text-blue-600">
                 <Link to={`/edit/${item._id}`}>{svg.edit}</Link>
               </td>
             </tr>

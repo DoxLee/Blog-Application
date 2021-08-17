@@ -1,0 +1,3 @@
+.animate-like {
+  @apply animate-fade-in-down hover:bg-black;
+}

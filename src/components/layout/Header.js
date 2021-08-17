@@ -30,11 +30,11 @@ const Header = () => {
   };
 
   return (
-    <header className=" border-b-2 border-gray-200 sticky top-0 z-50 bg-white text-gray-600 p-3">
-      <div className="flex justify-around items-center tracking-wider">
+    <header className="sticky top-0 z-50 p-3 text-gray-600 bg-white border-b-2 border-gray-200 ">
+      <div className="flex items-center justify-around tracking-wider">
         <div>
           <Link
-            className="link lg:text-2xl text-lg hover:text-blue-500 transition"
+            className="text-lg transition link lg:text-2xl hover:text-gray-800"
             to="/"
           >
             Blog App
@@ -42,22 +42,19 @@ const Header = () => {
         </div>
 
         <div className="flex items-center justify-center">
-          <Link to="/about" className="link hover:text-blue-500">
-            About
-          </Link>
           {user.login ? (
             <div className="relative">
               <span
-                className="text-lg lg:text-2xl cursor-pointer text-center block"
+                className="block text-lg text-center cursor-pointer lg:text-2xl"
                 onClick={() => setDropDown((pre) => !pre)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                  className="w-6 h-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  className="inline-block text-gray-900 mx-2 h-6 hover:text-blue-500"
+                  className="inline-block h-6 mx-2 text-gray-900 hover:text-blue-500"
                 >
                   <path
                     strokeLinecap="round"
@@ -68,24 +65,24 @@ const Header = () => {
                 </svg>
               </span>
               {dropdown && (
-                <div className="bg-gray-100 text-xs lg:text-lg absolute rounded ">
-                  <Link className="link block px-4 py-2 hover:text-blue-500 hover:bg-gray-50  transition ease-out delay-75 rounded">
+                <div className="absolute text-xs bg-gray-100 rounded lg:text-lg ">
+                  <Link className="block px-4 py-2 transition ease-out delay-75 rounded link hover:text-blue-500 hover:bg-gray-50">
                     Profile
                   </Link>
-                  <Link className="link block px-4 py-2 hover:text-blue-500 hover:bg-gray-50  transition ease-out delay-75 rounded">
+                  <Link className="block px-4 py-2 transition ease-out delay-75 rounded link hover:text-blue-500 hover:bg-gray-50">
                     Settings
                   </Link>
-                  <Link className="link block px-4 py-2 hover:text-blue-500 hover:bg-gray-50  transition ease-out delay-75 rounded">
+                  <Link className="block px-4 py-2 transition ease-out delay-75 rounded link hover:text-blue-500 hover:bg-gray-50">
                     Friends
                   </Link>
                   <Link
-                    to="/dashboard"
-                    className="link block px-4 py-2 hover:text-blue-500 hover:bg-gray-50  transition ease-out delay-75 rounded"
+                    to="/dashboard/overview"
+                    className="block px-4 py-2 transition ease-out delay-75 rounded link hover:text-blue-500 hover:bg-gray-50"
                   >
                     Dashboard
                   </Link>
                   <Link
-                    className="link block px-4 py-2 hover:text-blue-500 hover:bg-gray-50  transition ease-out delay-75 rounded"
+                    className="block px-4 py-2 transition ease-out delay-75 rounded link hover:text-blue-500 hover:bg-gray-50 "
                     onClick={logout}
                   >
                     Logout
@@ -97,7 +94,7 @@ const Header = () => {
             <div>
               <span>
                 <Link
-                  className="link text-base lg:text-lg hover:bg-gray-100 hover:text-gray-900 transition"
+                  className="text-base transition link lg:text-lg hover:bg-gray-100 hover:text-gray-900"
                   to="/login"
                 >
                   Log in
@@ -105,7 +102,7 @@ const Header = () => {
               </span>
               <span>
                 <Link
-                  className="link text-base lg:text-lg hover:bg-gray-100 hover:text-gray-900 transition"
+                  className="text-base transition link lg:text-lg hover:bg-gray-100 hover:text-gray-900"
                   to="/register"
                 >
                   Sign in

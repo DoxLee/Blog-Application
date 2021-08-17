@@ -26,40 +26,40 @@ const Home = () => {
   };
 
   return (
-    <div className="lg:grid lg:grid-cols-6 text-gray-600 font-thin ">
+    <div className="font-thin text-gray-600 lg:grid lg:grid-cols-6 ">
       <div className="lg:col-span-1"></div>
       <div className="col-span-6 lg:col-span-4">
-        {/* <div className="bg-gray-600 p-6 text-gray-50 my-4 rounded mx-4">
-          <span className="block text-center text-3xl tracking-wider">
+        {/* <div className="p-6 mx-4 my-4 bg-gray-600 rounded text-gray-50">
+          <span className="block text-3xl tracking-wider text-center">
             Teknoloji
           </span>
 
-          <span className="block text-center text-lg mt-3 tracking-wide">
+          <span className="block mt-3 text-lg tracking-wide text-center">
             Bu bölümde teknoloji ve günden konuları hakkında düşüncelerimi ve
             haberleri paylaşıyorum.
           </span>
         </div> */}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 text-gray-500 my-8 mx-8">
+        <div className="grid grid-cols-1 gap-10 mx-8 my-8 text-gray-500 lg:grid-cols-3">
           {posts.map((post, _idx) => (
-            <div className="bg-white rounded overflow-hidden shadow-md h-80 lg:h-96 relative hover:shadow-2xl">
+            <div className="relative overflow-hidden bg-white rounded shadow-md h-80 lg:h-96 hover:shadow-2xl">
               <img
-                className="w-full h-32 sm:h-48 object-cover"
-                src={`https://source.unsplash.com/random/${_idx}`}
+                className="object-cover w-full h-32 sm:h-48"
+                src={post.image?.[0].data_url}
                 alt=""
               />
-              <div className="lg:m-3 m-2">
-                <span className="lg:text-lg font-bold text-gray-600">
+              <div className="m-2 lg:m-3">
+                <span className="font-bold text-gray-600 lg:text-lg line-clamp-1">
                   {post.title}
                 </span>
               </div>
               <div className="m-2 lg:mx-3 lg:mb-3">
-                <p className="font-semibold line-clamp-3">{post.description}</p>
+                <p className="font-semibold line-clamp-2">{post.description}</p>
               </div>
-              <div className="absolute right-0 bottom-0 mx-3 mb-3 bg-gray-700 inline-block rounded-full lg:py-2  py-1 transform hover:-rotate-2 hover:-translate-y-1 hover:scale-105 transition ease-out delay-75 hover:bg-gray-600 hover:text-white">
+              <div className="absolute bottom-0 right-0 inline-block py-1 mx-3 mb-3 transition ease-out delay-75 transform bg-gray-700 rounded-full lg:py-2 hover:-rotate-2 hover:-translate-y-1 hover:scale-105 hover:bg-gray-600 hover:text-white">
                 <Link
-                  className="link text-white px-4 py-6 text-xs lg:text-base"
-                  to={`/posts/${post._id}`}
+                  className="px-4 py-6 text-xs text-white link lg:text-base"
+                  to={`/article/${post._id}`}
                 >
                   Read More
                 </Link>
@@ -67,10 +67,10 @@ const Home = () => {
             </div>
           ))}
         </div>
-        <div className="text-center py-6">
+        <div className="py-6 text-center">
           <button
             onClick={raiseLimit}
-            className="text-xl font-bold border-2 rounded-full py-2 px-4 border-gray-600 cursor-pointer transform hover:-rotate-2 hover:-translate-y-1 transition ease-out delay-75 hover:bg-gray-600 hover:text-white"
+            className="px-4 py-2 text-xl font-bold transition ease-out delay-75 transform border-2 border-gray-600 rounded-full cursor-pointer hover:-rotate-2 hover:-translate-y-1 hover:bg-gray-600 hover:text-white"
           >
             Load More
           </button>

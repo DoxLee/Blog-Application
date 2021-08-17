@@ -10,9 +10,10 @@ import Home from "./components/pages/Home";
 import Register from "./components/auth/Register";
 import Header from "./components/layout/Header";
 import EditPost from "./components/pages/EditPost";
-import Post from "./components/pages/Post";
 import Dashboard from "./components/pages/Dashboard/Dashboard";
 import CreatePost from "./components/pages/CreatePost/CreatePost";
+import Footer from "./components/layout/Footer/Footer";
+import Article from "./components/pages/Article/Article";
 
 const Routes = {
   register: "/register",
@@ -78,7 +79,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App bg-gray-50 min-h-screen max-h-full antialiased">
+    <div className="max-h-full min-h-screen antialiased App bg-gray-50">
       <UserContext.Provider value={{ user, setUser }}>
         {isLoading ? (
           "loading"
@@ -90,11 +91,12 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Route path="/createBlog" component={CreatePost} />
-              <Route path="/posts/:id" component={Post} />
+              <Route path="/article/:id" component={Article} />
               <Route path="/dashboard">
                 <Dashboard />
               </Route>
             </Switch>
+            {location.pathname.includes("/dashboard") ? <></> : <Footer />}
           </>
         )}
       </UserContext.Provider>

@@ -14,46 +14,47 @@ const PostCard = ({ data }) => {
     likes = "8,746",
   } = data;
   return (
-    <div className="flex items-center bg-white py-4 rounded-md shadow relative shadow-md my-4 py-4">
+    <div className="relative flex items-center py-4 my-4 bg-white rounded-md shadow shadow-md">
       <img
-        className="h-32 w-32 sm:h-40 sm:w-40 rounded-full object-cover  p-6 w-full object-cover"
+        className="object-cover w-32 w-full h-32 p-6 rounded-full sm:h-40 sm:w-40"
         src={`https://source.unsplash.com/random/${Math.random() * 100}`}
         alt="Post Card"
       />
-
       <div className="relative w-8/12 h-32">
-        <span className="text-xl text-gray-600 block font-semibold ">
+        <span className="block text-xl font-semibold text-gray-600 line-clamp-1">
           {title}
         </span>
-        <span className="text-base text-gray-500">{description}</span>
+        <span className="text-base text-gray-500 line-clamp-2 ">
+          {description}
+        </span>
         <span className="absolute bottom-0 left-0 bg-blue-400 text-lg text-white tracking-wide font-semibold py-1.5 px-2.5 rounded-md">
           #Technology
         </span>
       </div>
-      <div className="flex flex-col justify-center items-center h-full">
-        <div className="flex justify-center items-center">
+      <div className="flex flex-col items-center justify-center h-full">
+        <div className="flex items-center justify-center">
           <span className="inline-block px-3">{svg.likes}</span>
-          <span className="text-xl font-mono font-semibold">6,962</span>
+          <span className="font-mono text-xl font-semibold">6,962</span>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex items-center justify-center">
           <span className="inline-block px-3">{svg.comments}</span>
-          <span className="text-xl font-mono font-semibold">5,842</span>
+          <span className="font-mono text-xl font-semibold">5,842</span>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex items-center justify-center">
           <span className="inline-block px-3">{svg.share}</span>
-          <span className="text-xl font-mono font-semibold">1,992</span>
+          <span className="font-mono text-xl font-semibold">1,992</span>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex items-center justify-center">
           <span className="inline-block px-3">{svg.eye}</span>
-          <span className="text-xl font-mono font-semibold">9,998</span>
+          <span className="font-mono text-xl font-semibold">9,998</span>
         </div>
       </div>
-      <div className="absolute bottom-0 right-0 my-2 mx-4 font-semibold capitalize">
+      <div className="absolute bottom-0 right-0 mx-4 my-2 font-semibold capitalize">
         {moment(createdAt).fromNow()} Posted by{" "}
         <span className="font-bold"> {authorName} </span>
       </div>
       <Link
-        className="absolute right-0 top-0 mt-2 mx-4 cursor-pointer"
+        className="absolute top-0 right-0 mx-4 mt-2 cursor-pointer"
         to={`/edit/${_id}`}
       >
         {svg.edit}

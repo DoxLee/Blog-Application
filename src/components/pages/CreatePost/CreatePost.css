@@ -11,3 +11,7 @@
   @apply: bg-green-400;
   background-color: #68D391;
 }
+
+.save-button {
+    @apply px-4 py-2 font-semibold tracking-wider no-underline transition border-2 border-gray-200 border-solid rounded-md lg:px-6 lg:py-3 hover:bg-green-400 hover:text-white;
+}
