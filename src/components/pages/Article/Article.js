@@ -3,45 +3,64 @@ import Axios from "axios";
 import { Link } from "react-router-dom";
 import UserContext from "../../../context/UserContext";
 import { FaHeart } from "react-icons/fa";
+import useCookie from "../../hooks/useCokkie";
 
-const Article = ({ match }) => {
-  const [Article, setArticle] = useState({});
-
+const Post = ({ match }) => {
+  const [Post, setPost] = useState({ likes: [] });
+  const [accesToken, updateAccesToken] = useCookie("acces-token");
   const { user, setUser } = useContext(UserContext);
 
   console.log(user);
 
   // Articles fetch
-  useEffect(() => {
-    const fetchArticle = async () => {
-      const payload = {
-        id: match.params.id,
-      };
-      try {
-        const fetchArticle = await Axios.Article(
-          "http://localhost:3000/blog/get-Article",
-          payload
-        );
-        setArticle(() => fetchArticle.data);
-      } catch (error) {
-        console.log(error);
-      }
+  const fetchPost = async () => {
+    const payload = {
+      id: match.params.id,
     };
-    fetchArticle();
+    try {
+      const fetchPost = await Axios.post(
+        "http://localhost:3000/blog/get-post",
+        payload
+      );
+      setPost(() => fetchPost.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPost();
   }, []);
 
+  console.log(Post);
+
   const like = async () => {
-    
-  }
+    try {
+      await Axios.post(
+        "http://localhost:3000/blog/like-post",
+        {
+          postId: Post._id,
+        },
+        {
+          headers: {
+            "acces-token": accesToken,
+          },
+        }
+      );
+      fetchPost();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="mx-8 mt-4 lg:mx-56 lg:mt-12 ">
       <div className="py-8 my-4 bg-gray-600 rounded text-gray-50">
         <span className="block px-6 text-lg tracking-wider lg:text-3xl">
-          {Article.title}
+          {Post.title}
         </span>
         <div className="block px-6 mt-3 text-base tracking-wide lg:text-lg">
-          {Article.description}
+          {Post.description}
         </div>
       </div>
 
@@ -54,7 +73,7 @@ const Article = ({ match }) => {
         <div>
           <span className="text-lg">
             <span className="px-1 font-mono text-xl tracking-wider text-gray-600">
-              {Article.authorName}
+              {Post.authorName}
             </span>
             <br />
             <span className="px-1 text-gray-400 text-semibold">11.09.2000</span>
@@ -64,10 +83,10 @@ const Article = ({ match }) => {
 
       <div
         className="mt-5"
-        dangerouslySetInnerHTML={{ __html: Article.content }}
+        dangerouslySetInnerHTML={{ __html: Post.content }}
       ></div>
 
-      {Article.authorName === user.user.userName ? (
+      {Post.authorName === user.user.userName ? (
         <div>
           <Link className="p-3" to={`/edit/${match.params.id}`}>
             <button
@@ -95,14 +114,16 @@ const Article = ({ match }) => {
       <div className="flex mt-8 mb-2">
         <span className="flex flex-col items-center justify-center">
           <FaHeart
-            className="text-2xl text-red-600 transition ease-out delay-150 transform cursor-pointer hover:-translate-y-1 hover:scale-125"
-            onClick={() => console.log("You liked")}
+            className="text-2xl text-red-600 transition ease-out delay-150 transform cursor-pointer hover:scale-125"
+            onClick={like}
           />
-          <span className="font-mono text-lg font-medium">4.864</span>
+          <span className="font-mono text-lg font-medium">
+            {Post.likes.length}
+          </span>
         </span>
       </div>
     </div>
   );
 };
 
-export default Article;
+export default Post;
