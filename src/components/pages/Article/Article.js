@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import UserContext from "../../../context/UserContext";
 import { FaHeart } from "react-icons/fa";
 import useCookie from "../../hooks/useCokkie";
+import CommentInput from "./CommentInput";
+import moment from "moment";
+import Comment from "./Comment";
+import "./Article.css";
 
 const Post = ({ match }) => {
   const [Post, setPost] = useState({ likes: [] });
@@ -64,23 +68,6 @@ const Post = ({ match }) => {
         </div>
       </div>
 
-      <div className="flex items-center px-3 py-2 border-b-2 border-gray-500">
-        <img
-          src="https://source.unsplash.com/random/user"
-          alt=""
-          className="object-cover w-12 h-12 mx-2 rounded-full"
-        />
-        <div>
-          <span className="text-lg">
-            <span className="px-1 font-mono text-xl tracking-wider text-gray-600">
-              {Post.authorName}
-            </span>
-            <br />
-            <span className="px-1 text-gray-400 text-semibold">11.09.2000</span>
-          </span>
-        </div>
-      </div>
-
       <div
         className="mt-5"
         dangerouslySetInnerHTML={{ __html: Post.content }}
@@ -111,17 +98,38 @@ const Post = ({ match }) => {
       ) : (
         <></>
       )}
-      <div className="flex mt-8 mb-2">
+      <div className="flex justify-between px-5 mt-8 mb-2">
         <span className="flex flex-col items-center justify-center">
           <FaHeart
             className="text-2xl text-red-600 transition ease-out delay-150 transform cursor-pointer hover:scale-125"
             onClick={like}
           />
-          <span className="font-mono text-lg font-medium">
-            {Post.likes.length}
+          <span className="font-mono text-lg font-medium text-gray-600 transition ">
+            <p>{Post.likes.length}</p>
           </span>
         </span>
+        <div className="flex items-center px-3 py-2 ">
+          <img
+            src="https://source.unsplash.com/random/user"
+            alt=""
+            className="object-cover w-12 h-12 mx-2 rounded-full"
+          />
+          <div>
+            <span className="text-lg">
+              <span className="px-1 font-mono text-xl tracking-wider text-gray-600">
+                {Post.authorName}
+              </span>
+              <br />
+              <span className="px-1 text-gray-400 text-semibold">
+                {moment(Post?.publishAt).fromNow()}
+              </span>
+            </span>
+          </div>
+        </div>
       </div>
+      <hr className="border-t border-gray-400" />
+      <CommentInput />
+      <Comment postId={match.params.id} />
     </div>
   );
 };

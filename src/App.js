@@ -96,7 +96,7 @@ function App() {
                 <Dashboard />
               </Route>
             </Switch>
-            {location.pathname.includes("/dashboard") ? <></> : <Footer />}
+            {/* {location.pathname.includes("/dashboard") ? <></> : <Footer />} */}
           </>
         )}
       </UserContext.Provider>
