@@ -59,8 +59,8 @@ const Post = ({ match }) => {
 
   return (
     <div className="mx-8 mt-4 lg:mx-56 lg:mt-12 ">
-      <div className="py-8 my-4 bg-gray-600 rounded text-gray-50">
-        <span className="block px-6 text-lg tracking-wider lg:text-3xl">
+      <div className="py-8 my-4 text-gray-700 bg-gray-200 border-gray-600 rounded-r border-l-10">
+        <span className="block px-6 text-xl tracking-wider lg:text-3xl">
           {Post.title}
         </span>
         <div className="block px-6 mt-3 text-base tracking-wide lg:text-lg">
