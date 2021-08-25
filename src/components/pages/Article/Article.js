@@ -11,10 +11,29 @@ import "./Article.css";
 
 const Post = ({ match }) => {
   const [Post, setPost] = useState({ likes: [] });
+  const [comments, setComments] = useState([]);
   const [accesToken, updateAccesToken] = useCookie("acces-token");
   const { user, setUser } = useContext(UserContext);
 
   console.log(user);
+
+  useEffect(() => {
+    console.log("comments Değişti");
+  }, [comments]);
+
+  const fetchComments = async () => {
+    console.log("yorum yakalama çalıştı!");
+    try {
+      let comments = await Axios.post(
+        "http://localhost:3000/blog/get-comments",
+        { postId: match.params.id }
+      );
+      console.log(comments.data);
+      setComments(() => comments.data);
+    } catch (error) {
+      console.log("error comments", error);
+    }
+  };
 
   // Articles fetch
   const fetchPost = async () => {
@@ -34,6 +53,7 @@ const Post = ({ match }) => {
 
   useEffect(() => {
     fetchPost();
+    fetchComments();
   }, []);
 
   console.log(Post);
@@ -59,11 +79,11 @@ const Post = ({ match }) => {
 
   return (
     <div className="mx-8 mt-4 lg:mx-56 lg:mt-12 ">
-      <div className="py-8 my-4 text-gray-700 bg-gray-200 border-gray-600 rounded-r border-l-10">
-        <span className="block px-6 text-xl tracking-wider lg:text-3xl">
+      <div className="py-8 my-4 ">
+        <span className="block text-xl tracking-wider text-gray-700 lg:text-3xl">
           {Post.title}
         </span>
-        <div className="block px-6 mt-3 text-base tracking-wide lg:text-lg">
+        <div className="block mx-4 mt-3 text-base tracking-wide text-gray-500 lg:text-lg">
           {Post.description}
         </div>
       </div>
@@ -128,8 +148,8 @@ const Post = ({ match }) => {
         </div>
       </div>
       <hr className="border-t border-gray-400" />
-      <CommentInput />
-      <Comment postId={match.params.id} />
+      <CommentInput postId={match.params.id} fetchComments={fetchComments} />
+      <Comment comments={comments} postId={match.params.id} />
     </div>
   );
 };

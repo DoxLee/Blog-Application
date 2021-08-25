@@ -3,21 +3,29 @@ import React, { useContext, useState } from "react";
 import { CgComment } from "react-icons/cg";
 import UserContext from "../../../context/UserContext";
 
-const CommentInput = () => {
+const CommentInput = ({ postId, fetchComments }) => {
   const [comment, setComment] = useState("");
   const { user } = useContext(UserContext);
 
   const submit = async () => {
     let paylaod = {
-      author: user.user.id,
-      comment,
+      postId: postId,
+      content: comment,
     };
     try {
       const commentResponse = await axios.post(
         "http://localhost:3000/blog/comment-post",
-        paylaod
+        paylaod,
+        {
+          headers: {
+            "acces-token": user.accesToken,
+          },
+        }
       );
-    } catch (error) {}
+      fetchComments();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
