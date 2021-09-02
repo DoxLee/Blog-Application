@@ -6,7 +6,6 @@ import { FaHeart } from "react-icons/fa";
 import useCookie from "../../hooks/useCokkie";
 import CommentInput from "./CommentInput";
 import moment from "moment";
-import Comment from "./Comment";
 import "./Article.css";
 
 const Post = ({ match }) => {
@@ -93,7 +92,7 @@ const Post = ({ match }) => {
         dangerouslySetInnerHTML={{ __html: Post.content }}
       ></div>
 
-      {Post.authorName === user.user.userName ? (
+      {Post.authorName === user?.user?.userName ? (
         <div>
           <Link className="p-3" to={`/edit/${match.params.id}`}>
             <button
@@ -149,7 +148,6 @@ const Post = ({ match }) => {
       </div>
       <hr className="border-t border-gray-400" />
       <CommentInput postId={match.params.id} fetchComments={fetchComments} />
-      <Comment comments={comments} postId={match.params.id} />
     </div>
   );
 };
