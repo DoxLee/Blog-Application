@@ -11,7 +11,7 @@ const PostCard = ({ data }) => {
     authorName,
     createdAt,
     description,
-    likes = "8,746",
+
   } = data;
   return (
     <div className="relative flex items-center py-4 my-4 bg-white rounded-md shadow shadow-md">
