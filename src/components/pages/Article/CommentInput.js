@@ -18,7 +18,7 @@ const CommentInput = ({ postId, fetchComments }) => {
         paylaod,
         {
           headers: {
-            "acces-token": user.accesToken,
+            "access-token": user.accesToken,
           },
         }
       );

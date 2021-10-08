@@ -55,7 +55,7 @@ const CreatePost = () => {
         payload,
         {
           headers: {
-            "acces-token": user.accesToken,
+            "access-token": user.accesToken,
           },
         }
       );
@@ -170,7 +170,7 @@ const CreatePost = () => {
                   />
                 </svg>
                 <div className="px-2 font-medium text-gray-600">
-                  {user.user.userName}
+                  {user?.user?.userName}
                 </div>
               </div>
             </div>

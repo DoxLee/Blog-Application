@@ -27,7 +27,7 @@ const Routes = {
 function App() {
   let location = useLocation();
 
-  console.log(location);
+  const accessToken = useCookie("access-token");
 
   const [user, setUser] = useState({
     accesToken: undefined,
@@ -40,33 +40,18 @@ function App() {
   });
 
   const [isLoading, setLoading] = useState(true);
-  const [accesToken, updateAccesToken] = useCookie("acces-token");
-  const [refreshToken] = useCookie("refresh-token");
 
   useEffect(() => {
     const auth = async () => {
       try {
-        if (isTokenExpired(accesToken) && refreshToken) {
-          const getAccesToken = await Axios.post(
-            "http://localhost:3000/users/get-acces-token",
-            null,
-            { headers: { "refresh-token": refreshToken } }
-          );
-          updateAccesToken(getAccesToken.data.accesToken);
+        if (isTokenExpired(accessToken)) {
+          await Axios.post("http://localhost:3000/users/get-acces-token", null);
         }
         const loggedInResponse = await Axios.post(
           "http://localhost:3000/users/is-logged-in",
-          null,
-          {
-            headers: {
-              "acces-token": accesToken,
-            },
-          }
+          null
         );
         setUser({
-          login: true,
-          accesToken,
-          refreshToken,
           user: loggedInResponse.data.user,
         });
         setLoading(false);

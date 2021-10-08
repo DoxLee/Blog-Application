@@ -10,7 +10,7 @@ import useForm from "../hooks/useForm";
 export default function Login({ tokenLogic }) {
   let history = useHistory();
 
-  const [accesToken, updateAccesToken] = useCookie("acces-token");
+  const [accessToken, updateaccessToken] = useCookie("access-token");
   const [refreshToken, updateRefreshToken] = useCookie("refresh-token");
 
   const [userName, setUserName] = useLocalStorage("");
@@ -42,14 +42,14 @@ export default function Login({ tokenLogic }) {
         loginUser
       );
 
-      updateAccesToken(loginRes.data.accesToken);
+      updateaccessToken(loginRes.data.accessToken);
       updateRefreshToken(loginRes.data.refreshToken);
 
-      // console.log(loginRes.data, accesToken, refreshToken);
+      // console.log(loginRes.data, accessToken, refreshToken);
 
       setUser({
         login: true,
-        accesToken: loginRes.data.accesToken,
+        accessToken: loginRes.data.accessToken,
         refreshToken: loginRes.data.refreshToken,
         user: loginRes.data.user,
       });
@@ -59,8 +59,8 @@ export default function Login({ tokenLogic }) {
   };
 
   return (
-    <div className="flex justify-center tracking-wide h-full">
-      <form className="w-50 p-3 w-1/2" onSubmit={submit}>
+    <div className="flex justify-center h-full tracking-wide">
+      <form className="w-1/2 p-3 w-50" onSubmit={submit}>
         <div className="w-full mb-2">
           <label for="userName" className="label-css">
             Username
@@ -103,7 +103,7 @@ export default function Login({ tokenLogic }) {
           <div>
             <Link
               to="/forget-password"
-              className="underline text-lg hover:text-blue-700 transition"
+              className="text-lg underline transition hover:text-blue-700"
             >
               Forget Password
             </Link>

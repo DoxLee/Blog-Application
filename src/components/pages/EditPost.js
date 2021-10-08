@@ -56,7 +56,7 @@
 //         payload,
 //         {
 //           headers: {
-//             "acces-token": user.accesToken,
+//             "access-token": user.accesToken,
 //           },
 //         }
 //       );

@@ -6,8 +6,8 @@ import useCookie from "../hooks/useCokkie";
 import useForm from "../hooks/useForm";
 
 export default function Register() {
-  const [accesToken, updateAccesToken] = useCookie("acces-token");
-  const [refreshToken, updateRefreshToken] = useCookie("refresh-token");
+  const [accessToken, updateAccessToken] = useCookie("access-token");
+  const [, updateRefreshToken] = useCookie("refresh-token");
 
   let history = useHistory();
 
@@ -38,12 +38,12 @@ export default function Register() {
 
       setUser({
         login: true,
-        accesToken: registerRes.data.accesToken,
+        accessToken: registerRes.data.accessToken,
         refreshToken: registerRes.data.refreshToken,
         user: registerRes.data.user,
       });
 
-      updateAccesToken(registerRes.data.accesToken);
+      updateAccessToken(registerRes.data.accessToken);
       updateRefreshToken(user.refreshToken);
 
       history.push("/");
@@ -53,8 +53,8 @@ export default function Register() {
   };
 
   return (
-    <div className="flex justify-center items-center tracking-wide h-full">
-      <form className="w-50 p-3 w-1/2" onSubmit={submit}>
+    <div className="flex items-center justify-center h-full tracking-wide">
+      <form className="w-1/2 p-3 w-50" onSubmit={submit}>
         <div className="w-full mb-2">
           <label for="userName" className="label-css">
             Username

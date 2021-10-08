@@ -10,7 +10,7 @@ const Header = () => {
 
   const [dropdown, setDropDown] = useState(false);
   const { user, setUser } = useContext(UserContext);
-  const [accesToken, updateAccesToken] = useCookie("acces-token");
+  const [accessToken, updateAccessToken] = useCookie("access-token");
   const [refreshToken, updateRefreshToken] = useCookie("refresh-token");
 
   const logout = async (e) => {
@@ -18,13 +18,13 @@ const Header = () => {
 
     setUser({
       login: false,
-      accesToken: "",
+      accessToken: "",
       refreshToken: "",
       user: "",
     });
 
     updateRefreshToken("");
-    updateAccesToken("");
+    updateAccessToken("");
 
     history.push("/");
   };

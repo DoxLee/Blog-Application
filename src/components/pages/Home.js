@@ -40,9 +40,9 @@ const Home = () => {
           </span>
         </div> */}
 
-        <div className="grid grid-cols-1 gap-10 mx-8 my-8 text-gray-500 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 mx-8 my-8 text-gray-500 lg:grid-cols-3 ">
           {posts.map((post, _idx) => (
-            <div className="relative overflow-hidden bg-white rounded shadow-md h-80 lg:h-96 hover:shadow-2xl">
+            <div className="relative overflow-hidden transition duration-150 ease-out transform bg-white rounded h-80 lg:h-96 hover:shadow-2xl hover:-translate-y-1 animate-fade-in-down">
               <img
                 className="object-cover w-full h-32 sm:h-48"
                 src={post.image?.[0].data_url}
